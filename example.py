@@ -5,13 +5,10 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import KernelCenterer
 
 cosim = Cosimilarity('dat/1000-export')
-
-# Recenter matrix. This converts it to a dense matrix :(
-kc = KernelCenterer()
-dense = kc.fit_transform(cosim.matrix.toarray())
+cosim.normalize()
 
 km = KMeans(n_clusters=12)
-km.fit(dense)
+km.fit(cosim.matrix)
 for (i, centroid) in enumerate(km.cluster_centers_):
     top_ids = np.argsort(-centroid)[:5]
     print 'top titles in centroid', i

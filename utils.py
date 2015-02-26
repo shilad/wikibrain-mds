@@ -1,6 +1,16 @@
+import numpy as np
 import scipy.sparse
+import sklearn.preprocessing
 import sys
 
+EXAMPLE_ARTICLES = [
+    'Firefly (TV series)',
+    'Albatross',
+    '2010 Winter Olympics',
+    'Jessica Alba',
+    'Christianity',
+    'Computer',
+]
 
 def warn(message):
     sys.stderr.write(message + '\n')
@@ -48,5 +58,35 @@ class Cosimilarity:
     
         return scipy.sparse.coo_matrix((data, (rows, cols)), shape=(n, n))
 
+    def normalize(self):
+        M = self.matrix.toarray()
+        sklearn.preprocessing.normalize(M, axis=0, copy=False)
+        sklearn.preprocessing.normalize(M, axis=1, copy=False)
+        M = 0.5 * M + 0.5 * M.T
+        self.matrix = scipy.sparse.csr_matrix(M)
+            
+
+    def get_article_id(self, title):
+        for (i, t) in self.titles.items():
+            if clean_title(title) == clean_title(t):
+                return i
+        return None
+
+    def print_neighbors(self, M=None, n=5, articles=EXAMPLE_ARTICLES, out=sys.stdout):
+        if not M: M = self.matrix
+        for a in articles:
+            id = cosim.get_article_id(a)
+            v = M[id].toarray()[0]
+            print 'neighbors for %s (id=%d)' % (a, id)
+            top_ids = np.argsort(-v)[:n]
+            for id in top_ids:
+                print '\t%s:%.3f' % (self.titles[id], v[id])
+
+
+def clean_title(t):
+    return t.lower().replace('_', ' ').replace('+', ' ')
+
 if __name__ == '__main__':
     cosim = Cosimilarity('./dat/1000-export')
+    cosim.normalize()
+    cosim.print_neighbors()
