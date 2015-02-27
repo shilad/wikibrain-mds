@@ -5,9 +5,9 @@ import sys
 
 EXAMPLE_ARTICLES = [
     'Firefly (TV series)',
-    'Albatross',
-    '2010 Winter Olympics',
-    'Jessica Alba',
+    #'Albatross',
+    #'2010 Winter Olympics',
+    #'Jessica Alba',
     'Christianity',
     'Computer',
 ]
@@ -77,16 +77,14 @@ class Cosimilarity:
         for a in articles:
             id = cosim.get_article_id(a)
             v = M[id].toarray()[0]
-            print 'neighbors for %s (id=%d)' % (a, id)
+            out.write('neighbors for %s (id=%d)\n' % (a, id))
             top_ids = np.argsort(-v)[:n]
             for id in top_ids:
-                print '\t%s:%.3f' % (self.titles[id], v[id])
-
+                out.write('\t%s:%.3f\n' % (self.titles[id], v[id]))
 
 def clean_title(t):
     return t.lower().replace('_', ' ').replace('+', ' ')
 
 if __name__ == '__main__':
     cosim = Cosimilarity('./dat/1000-export')
-    cosim.normalize()
     cosim.print_neighbors()
