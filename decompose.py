@@ -6,13 +6,13 @@ from evaluate import Evaluator
 
 import sklearn.decomposition
 
-#ALGS = [ 'PCA', 'KernelPCA', 'RandomizedPCA', 'NMF', 'TruncatedSVD' ]
-ALGS = [ 'RandomizedPCA', 'TruncatedSVD' , 'NMF' ]
+ALGS = [ 'PCA', 'KernelPCA', 'RandomizedPCA', 'NMF', 'TruncatedSVD' ]
+SPARSE_ALGS = [ 'RandomizedPCA', 'TruncatedSVD' ]
 NUM_COMPONENTS = [2, 5, 10, 20 , 50, 100, 200]
 
 
-def main(cosim):
-    #dense = cosim.matrix.toarray()
+def main(cosim, algs):
+    dense = cosim.matrix.toarray()
     for nc in NUM_COMPONENTS:
         print
         print
@@ -21,11 +21,13 @@ def main(cosim):
         print '='*80
         print
 
-        #evaluator.evaluate()
         for name in ALGS:
             f = getattr(sklearn.decomposition, name)
             alg = f(n_components=nc)
-            embedding = alg.fit_transform(cosim.matrix)
+            if name in SPARSE_ALGS:
+                embedding = alg.fit_transform(cosim.matrix)
+            else:
+                embedding = alg.fit_transform(dense)
             evaluator = Evaluator(cosim, embedding)
 
             print
@@ -36,5 +38,7 @@ def main(cosim):
     
 
 if __name__ == '__main__':
-    cosim = Cosimilarity('./dat/5000-export')
-    main(cosim)
+    cosim = Cosimilarity('./dat/1000-export')
+    main(cosim, ALGS)
+    #cosim = Cosimilarity('./dat/5000-export')
+    #main(cosim, SPARSE_ALGS)
