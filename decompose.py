@@ -8,7 +8,7 @@ import sklearn.decomposition
 
 ALGS = [ 'PCA', 'KernelPCA', 'RandomizedPCA', 'NMF', 'TruncatedSVD' ]
 SPARSE_ALGS = [ 'RandomizedPCA', 'TruncatedSVD' ]
-NUM_COMPONENTS = [2, 5, 10, 20 , 50, 100, 200]
+NUM_COMPONENTS = [10, 20 , 50, 100, 200]
 
 
 def main(cosim, algs):

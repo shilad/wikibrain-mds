@@ -7,7 +7,7 @@ from sklearn.neighbors import NearestNeighbors
 
 from utils import *
 
-SAMPLE_SIZE = 100
+SAMPLE_SIZE = 200
 TOP_K = 5
 
 
@@ -44,12 +44,24 @@ class Evaluator:
 
     def actual_neighbors(self, id1, n):
         v_actual = self.cosim.matrix[id1].toarray()[0]
-        return [ (id2, self.cosim.matrix[id1,id2])
-                 for id2 in np.argsort(-v_actual)[:n] ]
+        result = [
+            (id2, self.cosim.matrix[id1,id2])
+            for id2 in np.argsort(-v_actual)[:n+1]
+            if id2 != id1
+        ]
+        return result[:n]
 
     def embedded_neighbors(self, id1, n):
-        (scores, indices) = self.nbrs.kneighbors(self.embedding[id1], n)
-        return zip(indices[0], np.exp(-scores[0]))
+        (scores, indices) = self.nbrs.kneighbors(self.embedding[id1], n+1)
+        scores = scores[0]
+        indices = indices[0]
+        id1_indices = np.where(indices == id1)[0]
+        to_del = len(scores) - 1
+        if len(id1_indices) > 0:
+            to_del = id1_indices[0]
+        indices = np.delete(indices, to_del)
+        scores = np.delete(scores, to_del)
+        return zip(indices, np.exp(-scores))
 
     def evaluate_precision(self):
         ids = self.sample_ids()
@@ -66,17 +78,18 @@ class Evaluator:
     def evaluate_correlation(self, num_neighbors=3, num_zeros=1):
         X = []
         Y = []
-        for id1 in self.sample_ids():
+        for id1 in self.sample_ids(self.sample_size * 2):
             indices = self.cosim.matrix[id1].indices
-            for id2 in random.sample(indices, 3):
+            for id2 in indices:
                 X.append(np.linalg.norm(self.embedding[id1] - self.embedding[id2]))
                 Y.append(self.cosim.matrix[id1,id2])
         self.write('\nCorrelations between actual and embedded distances\n')
         self.write('\tPearsons: %.3f\n' % scipy.stats.pearsonr(X, Y)[0])
         self.write('\tSpearmans: %.3f\n' % scipy.stats.spearmanr(X, Y)[0])
 
-    def sample_ids(self):
-        return random.sample(self.cosim.titles, self.sample_size)
+    def sample_ids(self, n=None):
+        if not n: n = self.sample_size
+        return random.sample(self.cosim.titles, n)
         
 def to_dense(M):
     if scipy.sparse.issparse(M):
