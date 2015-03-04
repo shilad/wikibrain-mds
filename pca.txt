@@ -1,0 +1,150 @@
+results for RandomizedPCA rank 10 :
+
+neighbors for Firefly (TV series) (id=28)
+    --Actual--                            --Embedded--                       
+    0.846 Serenity (movie)            0.688 Serenity (movie)         
+    0.788 Buffy the Vampire Slayer    0.575 Bridge to Terabithia (2007 movie)
+    0.678 Rachel Berry                0.570 The Hardy Boys           
+    0.659 Family Guy                  0.556 Buffy the Vampire Slayer 
+    0.633 The Hardy Boys              0.479 Broken Sword: The Shadow of the Templars
+
+neighbors for Christianity (id=533)
+    --Actual--                            --Embedded--                       
+    0.833 History of Christianity     0.716 Timeline of Christianity 
+    0.830 Timeline of Christianity    0.669 History of Christianity  
+    0.762 Jesus                       0.662 Michelangelo             
+    0.759 Judaism                     0.582 Leonardo da Vinci        
+    0.746 Jehovah's Witnesses         0.582 Jehovah's Witnesses      
+
+neighbors for Computer (id=951)
+    --Actual--                            --Embedded--                       
+    0.747 MacBook Air                 0.385 String theory            
+    0.663 Slide rule                  0.310 Emoticon                 
+    0.630 IPod touch                  0.304 Pulmonary hypertension   
+    0.614 Colossus computer           0.299 Awards for mathematics   
+    0.614 RAID                        0.292 Uncertainty principle    
+
+Precision of embedded neighbors compared to actual neighbors
+	precision of nearest-1: precision 11.000%
+	precision of nearest-5: precision 22.400%
+	precision of nearest-20: precision 33.050%
+	precision of nearest-50: precision 42.720%
+	precision of nearest-100: precision 45.685%
+
+Correlations between actual and embedded distances
+	Pearsons: -0.563
+	Spearmans: -0.586
+
+
+results for RandomizedPCA rank 20 :
+
+neighbors for Firefly (TV series) (id=28)
+    --Actual--                            --Embedded--                       
+    0.846 Serenity (movie)            0.432 Serenity (movie)         
+    0.788 Buffy the Vampire Slayer    0.335 Buffy the Vampire Slayer 
+    0.678 Rachel Berry                0.281 Survivor: Palau          
+    0.659 Family Guy                  0.249 Borat Sagdiyev           
+    0.633 The Hardy Boys              0.241 Xena: Warrior Princess   
+
+neighbors for Christianity (id=533)
+    --Actual--                            --Embedded--                       
+    0.833 History of Christianity     0.594 Timeline of Christianity 
+    0.830 Timeline of Christianity    0.556 History of Christianity  
+    0.762 Jesus                       0.443 Hinduism                 
+    0.759 Judaism                     0.439 Buddhism                 
+    0.746 Jehovah's Witnesses         0.434 Michelangelo             
+
+neighbors for Computer (id=951)
+    --Actual--                            --Embedded--                       
+    0.747 MacBook Air                 0.215 Emoticon                 
+    0.663 Slide rule                  0.192 Slide rule               
+    0.630 IPod touch                  0.165 String theory            
+    0.614 Colossus computer           0.157 Uncertainty principle    
+    0.614 RAID                        0.134 Criticism of Wikipedia   
+
+Precision of embedded neighbors compared to actual neighbors
+	precision of nearest-1: precision 15.000%
+	precision of nearest-5: precision 29.600%
+	precision of nearest-20: precision 41.725%
+	precision of nearest-50: precision 46.460%
+	precision of nearest-100: precision 45.655%
+
+Correlations between actual and embedded distances
+	Pearsons: -0.653
+	Spearmans: -0.647
+
+
+results for RandomizedPCA rank 50 :
+
+neighbors for Firefly (TV series) (id=28)
+    --Actual--                            --Embedded--                       
+    0.846 Serenity (movie)            0.181 Buffy the Vampire Slayer 
+    0.788 Buffy the Vampire Slayer    0.132 Xena: Warrior Princess   
+    0.678 Rachel Berry                0.101 The Hardy Boys           
+    0.659 Family Guy                  0.094 Serenity (movie)         
+    0.633 The Hardy Boys              0.089 Borat Sagdiyev           
+
+neighbors for Christianity (id=533)
+    --Actual--                            --Embedded--                       
+    0.833 History of Christianity     0.378 Timeline of Christianity 
+    0.830 Timeline of Christianity    0.353 History of Christianity  
+    0.762 Jesus                       0.297 Jehovah's Witnesses      
+    0.759 Judaism                     0.290 Hinduism                 
+    0.746 Jehovah's Witnesses         0.276 Buddhism                 
+
+neighbors for Computer (id=951)
+    --Actual--                            --Embedded--                       
+    0.747 MacBook Air                 0.130 Slide rule               
+    0.663 Slide rule                  0.114 Emoticon                 
+    0.630 IPod touch                  0.082 Assembly language        
+    0.614 Colossus computer           0.080 Criticism of Wikipedia   
+    0.614 RAID                        0.078 Web color                
+
+Precision of embedded neighbors compared to actual neighbors
+	precision of nearest-1: precision 20.500%
+	precision of nearest-5: precision 37.800%
+	precision of nearest-20: precision 47.250%
+	precision of nearest-50: precision 50.800%
+	precision of nearest-100: precision 48.305%
+
+Correlations between actual and embedded distances
+	Pearsons: -0.710
+	Spearmans: -0.662
+
+
+results for RandomizedPCA rank 100 :
+
+neighbors for Firefly (TV series) (id=28)
+    --Actual--                            --Embedded--                       
+    0.846 Serenity (movie)            0.124 Buffy the Vampire Slayer 
+    0.788 Buffy the Vampire Slayer    0.077 Serenity (movie)         
+    0.678 Rachel Berry                0.068 Xena: Warrior Princess   
+    0.659 Family Guy                  0.067 The Hardy Boys           
+    0.633 The Hardy Boys              0.049 Survivor: Palau          
+
+neighbors for Christianity (id=533)
+    --Actual--                            --Embedded--                       
+    0.833 History of Christianity     0.231 History of Christianity  
+    0.830 Timeline of Christianity    0.216 Timeline of Christianity 
+    0.762 Jesus                       0.196 Jehovah's Witnesses      
+    0.759 Judaism                     0.180 Hinduism                 
+    0.746 Jehovah's Witnesses         0.177 Buddhism                 
+
+neighbors for Computer (id=951)
+    --Actual--                            --Embedded--                       
+    0.747 MacBook Air                 0.079 Slide rule               
+    0.663 Slide rule                  0.066 Assembly language        
+    0.630 IPod touch                  0.060 Web color                
+    0.614 Colossus computer           0.051 Criticism of Wikipedia   
+    0.614 RAID                        0.050 Emoticon                 
+
+Precision of embedded neighbors compared to actual neighbors
+	precision of nearest-1: precision 22.500%
+	precision of nearest-5: precision 36.100%
+	precision of nearest-20: precision 48.150%
+	precision of nearest-50: precision 49.360%
+	precision of nearest-100: precision 47.785%
+
+Correlations between actual and embedded distances
+	Pearsons: -0.722
+	Spearmans: -0.649

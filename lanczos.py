@@ -105,12 +105,13 @@ class CompactLanczosDecomposition():
  
 if __name__ == '__main__':
     cosim = Cosimilarity('./dat/1000-export')
-    algs = [
-        ('lanczos', LanczosDecomposition(20, False)),
-        ('scipy-svd', ScipySvd(20)),
-    ]
-    for (name, alg) in algs:
-        print '\n\nResults for algorithm %s\n\n' % name
-        embedding = alg.fit_transform(cosim.matrix)
-        evaluator = Evaluator(cosim, embedding)
+    for nc in [10, 20, 50, 100, 200]:
+        algs = [
+            ('lanczos', LanczosDecomposition(nc, False)),
+            ('scipy-svd', ScipySvd(nc)),
+        ]
+        for (name, alg) in algs:
+            print '\n\nResults for algorithm %s\n\n' % name
+            embedding = alg.fit_transform(cosim.matrix)
+            evaluator = Evaluator(cosim, embedding)
         evaluator.evaluate()

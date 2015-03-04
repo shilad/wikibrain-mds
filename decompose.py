@@ -6,9 +6,11 @@ from evaluate import Evaluator
 
 import sklearn.decomposition
 
-ALGS = [ 'PCA', 'KernelPCA', 'RandomizedPCA', 'NMF', 'TruncatedSVD' ]
+#ALGS = [ 'PCA', 'KernelPCA', 'RandomizedPCA', 'NMF', 'TruncatedSVD' ]
+ALGS = [ 'RandomizedPCA' ]
 SPARSE_ALGS = [ 'RandomizedPCA', 'TruncatedSVD' ]
 NUM_COMPONENTS = [10, 20 , 50, 100, 200]
+#NUM_COMPONENTS = [50, 100, 200]
 
 
 def main(cosim, algs):
